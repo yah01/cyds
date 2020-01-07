@@ -9,7 +9,7 @@ func (t *Trie) at(i Sizet) *Node {
 	return &(t.Nodes[i])
 }
 
-func (t *Trie) Insert(str string) {
+func (t *Trie) Insert(str string, val interface{}) {
 	s := []rune(str)
 	if t.Size == 0 {
 		t.Nodes = []Node{NewNode()}
@@ -32,9 +32,10 @@ func (t *Trie) Insert(str string) {
 	}
 
 	t.at(cur).isWord = true
+	t.at(cur).Value = val
 }
 
-func (t *Trie) Match(str string) bool {
+func (t *Trie) Match(str string) (*Node, bool) {
 	s := []rune(str)
 	var cur Sizet = 0
 
@@ -44,9 +45,9 @@ func (t *Trie) Match(str string) bool {
 		if ok {
 			cur = nxt
 		} else {
-			return false
+			return nil, false
 		}
 	}
 
-	return t.at(cur).isWord
+	return t.at(cur), true
 }
