@@ -32,7 +32,7 @@ func (t *Trie) Insert(str string, val interface{}) {
 	}
 
 	t.at(cur).isWord = true
-	t.at(cur).Value = val
+	t.at(cur).Values = append(t.at(cur).Values, val)
 }
 
 func (t *Trie) Match(str string) (*Node, bool) {

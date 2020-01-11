@@ -18,9 +18,9 @@ func (list *contiguousList) Empty() bool {
 type Node struct {
 	isWord bool
 	ch     map[rune]Sizet
-	Value  interface{}
+	Values []interface{}
 }
 
 func NewNode() Node {
-	return Node{false, make(map[rune]Sizet),nil}
+	return Node{false, make(map[rune]Sizet), nil}
 }
