@@ -7,11 +7,24 @@ type Sizet = uint
 //contiguous list
 type contiguousList struct {
 	data []Elem
-	Size Sizet
+	size Sizet
 }
 
 func (list *contiguousList) Empty() bool {
-	return list.Size != 0
+	return list.size != 0
+}
+
+func (list *contiguousList) Size() Sizet {
+	return list.size
+}
+
+func (list *contiguousList) Push(v Elem) {
+	if list.size == 0 {
+		list.data = []Elem{v}
+	} else {
+		list.data = append(list.data, v)
+	}
+	list.size++
 }
 
 //Node

@@ -5,21 +5,12 @@ type Stack struct {
 }
 
 func (q *Stack) Top() Elem {
-	return q.data[q.Size-1]
-}
-
-func (q *Stack) Push(v Elem) {
-	if q.Size == 0 {
-		q.data = []Elem{v}
-	} else {
-		q.data = append(q.data, v)
-	}
-	q.Size++
+	return q.data[q.size-1]
 }
 
 func (q *Stack) Pop() Elem {
-	q.Size--
-	v := q.data[q.Size]
-	q.data = q.data[0:q.Size]
+	q.size--
+	v := q.data[q.size]
+	q.data = q.data[0:q.size]
 	return v
 }
