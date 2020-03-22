@@ -9,9 +9,6 @@ type ACAM struct {
 
 //after all Insert finishing, call Build
 func (ac *ACAM) Build() {
-	ac.next = make([]Sizet, ac.Size)
-	ac.last = make([]Sizet, ac.Size)
-
 	var queue Queue
 
 	for _, val := range ac.at(0).ch {
