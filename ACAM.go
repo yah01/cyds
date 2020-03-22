@@ -7,7 +7,7 @@ type ACAM struct {
 	last []Sizet
 }
 
-//after all Insert finishing, call Build
+// after all Insert finishing, call Build
 func (ac *ACAM) Build() {
 	var queue Queue
 
