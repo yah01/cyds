@@ -10,7 +10,7 @@ func (t *Trie) at(i int) *Node {
 
 func (t *Trie) Insert(str string, val interface{}) {
 	if t.Nodes == nil {
-		t.Nodes = []Node{}
+		t.Nodes = []Node{NewNode()}
 	}
 
 	var (
