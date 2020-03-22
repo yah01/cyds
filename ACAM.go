@@ -1,4 +1,4 @@
-package cyDS
+package cyds
 
 type ACAM struct {
 	Trie

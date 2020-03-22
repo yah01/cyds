@@ -1,33 +1,27 @@
-package cyDS
+package cyds
 
 type Elem interface{}
 
-type Sizet = uint
+type Sizet = int
 
-//contiguous list
+// contiguous list
 type contiguousList struct {
 	data []Elem
-	size Sizet
 }
 
 func (list *contiguousList) Empty() bool {
-	return list.size != 0
+	return len(list.data) != 0
 }
 
-func (list *contiguousList) Size() Sizet {
-	return list.size
+func (list *contiguousList) Size() int {
+	return len(list.data)
 }
 
 func (list *contiguousList) Push(v Elem) {
-	if list.size == 0 {
-		list.data = []Elem{v}
-	} else {
-		list.data = append(list.data, v)
-	}
-	list.size++
+	list.data = append(list.data, v)
 }
 
-//Node
+// Node
 type Node struct {
 	isWord bool
 	ch     map[rune]Sizet

@@ -1,16 +1,16 @@
-package cyDS
+package cyds
 
 type Stack struct {
 	contiguousList
 }
 
 func (q *Stack) Top() Elem {
-	return q.data[q.size-1]
+	return q.data[len(q.data)-1]
 }
 
 func (q *Stack) Pop() Elem {
-	q.size--
-	v := q.data[q.size]
-	q.data = q.data[0:q.size]
+	length := len(q.data)
+	v := q.data[length-1]
+	q.data = q.data[0 : length-1]
 	return v
 }

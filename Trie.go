@@ -1,33 +1,28 @@
-package cyDS
+package cyds
 
 type Trie struct {
 	Nodes []Node
-	Size  Sizet
 }
 
-func (t *Trie) at(i Sizet) *Node {
+func (t *Trie) at(i int) *Node {
 	return &(t.Nodes[i])
 }
 
 func (t *Trie) Insert(str string, val interface{}) {
-	s := []rune(str)
-	if t.Size == 0 {
-		t.Nodes = []Node{NewNode()}
-		t.Size = 1
-	}
+	var (
+		s   = []rune(str)
+		cur = 0
+	)
 
-	var cur Sizet = 0
 	for i := 0; i < len(s); i++ {
-		var c rune = s[i]
+		c := s[i]
 
-		nxt, ok := t.at(cur).ch[c]
-		if !ok {
-			t.Size++
-			t.Nodes = append(t.Nodes, NewNode())
-			t.at(cur).ch[c] = t.Size - 1
-			cur = t.Size - 1
-		} else {
+		if nxt, ok := t.at(cur).ch[c]; ok {
 			cur = nxt
+		} else {
+			t.Nodes = append(t.Nodes, NewNode())
+			t.at(cur).ch[c] = len(t.Nodes) - 1
+			cur = len(t.Nodes) - 1
 		}
 	}
 
@@ -36,13 +31,13 @@ func (t *Trie) Insert(str string, val interface{}) {
 }
 
 func (t *Trie) Match(str string) (*Node, bool) {
-	s := []rune(str)
-	var cur Sizet = 0
+	var (
+		s   = []rune(str)
+		cur = 0
+	)
 
 	for i := 0; i < len(s); i++ {
-		nxt, ok := t.at(cur).ch[s[i]]
-
-		if ok {
+		if nxt, ok := t.at(cur).ch[s[i]]; ok {
 			cur = nxt
 		} else {
 			return nil, false

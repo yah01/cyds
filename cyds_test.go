@@ -1,4 +1,4 @@
-package cyDS
+package cyds
 
 import (
 	"fmt"
