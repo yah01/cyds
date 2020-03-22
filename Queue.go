@@ -10,6 +10,6 @@ func (q *Queue) Front() Elem {
 
 func (q *Queue) Pop() Elem {
 	v := q.data[0]
-	q.data = q.data[1:len(q.data)]
+	q.data = q.data[1:]
 	return v
 }
