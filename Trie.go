@@ -9,6 +9,10 @@ func (t *Trie) at(i int) *Node {
 }
 
 func (t *Trie) Insert(str string, val interface{}) {
+	if t.Nodes == nil {
+		t.Nodes = []Node{}
+	}
+
 	var (
 		s   = []rune(str)
 		cur = 0
